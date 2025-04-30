@@ -1326,6 +1326,9 @@ PODS:
   - SVProgressHUD (2.3.1):
     - SVProgressHUD/Core (= 2.3.1)
   - SVProgressHUD/Core (2.3.1)
+  - ZLImageEditor (2.0.3):
+    - ZLImageEditor/Core (= 2.0.3)
+  - ZLImageEditor/Core (2.0.3)
 
 DEPENDENCIES:
   - FirebaseAuth (= 11.6.0)
@@ -1333,6 +1336,7 @@ DEPENDENCIES:
   - FirebaseStorage (= 11.6.0)
   - FirebaseStorageUI (= 15.0.0)
   - SVProgressHUD (= 2.3.1)
+  - ZLImageEditor (= 2.0.3)
 
 SPEC REPOS:
   trunk:
@@ -1358,6 +1362,7 @@ SPEC REPOS:
     - RecaptchaInterop
     - SDWebImage
     - SVProgressHUD
+    - ZLImageEditor
 
 SPEC CHECKSUMS:
   abseil: d121da9ef7e2ff4cab7666e76c5a3e0915ae08c3
@@ -1382,7 +1387,8 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   SDWebImage: 73c6079366fea25fa4bb9640d5fb58f0893facd8
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
+  ZLImageEditor: 56ca892136c1c2d9a4e5ad6c4b961259a5219bef
 
-PODFILE CHECKSUM: 5079935c97ba282d39ba43b8b79aaa91294cbf04
+PODFILE CHECKSUM: 08e4afa2d8ddde5c28aaf93fb6ff2ffe87d97092
 
 COCOAPODS: 1.16.2

@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
 
     // ログインボタンをタップしたときに呼ばれるメソッド
     @IBAction func handleLoginButton(_ sender: Any) {
+        //view.endEditing(true) 
         if let address = mailAddressTextField.text, let password = passwordTextField.text {
 
             // アドレスとパスワード名のいずれかでも入力されていない時は何もしない
@@ -28,7 +29,10 @@ class LoginViewController: UIViewController {
             Auth.auth().signIn(withEmail: address, password: password) { authResult, error in
                 if let error = error {
                     print("DEBUG_PRINT: " + error.localizedDescription)
-                    SVProgressHUD.showError(withStatus: "サインインに失敗しました。")
+                    //SVProgressHUD.showError(withStatus: "サインインに失敗しました。")
+                    
+                        SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    
                     return
                 }
                 print("DEBUG_PRINT: ログインに成功しました。")

@@ -8,7 +8,57 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ホーム-->
+        <!--Comment View Controller-->
+        <scene sceneID="jaB-RU-bNG">
+            <objects>
+                <viewController storyboardIdentifier="Comment" id="UUT-KB-9oJ" customClass="CommentViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qJ2-ZB-HON">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KQz-eT-STv">
+                                <rect key="frame" x="0.0" y="59" width="393" height="721"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pje-VJ-UPH">
+                                <rect key="frame" x="10" y="782" width="350" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdt-lt-7Y0">
+                                <rect key="frame" x="362" y="788" width="21" height="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="paperplane.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="handleSendButton:" destination="UUT-KB-9oJ" eventType="touchUpInside" id="K9t-c9-Fqp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SVe-0m-vTT"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <constraints>
+                            <constraint firstItem="SVe-0m-vTT" firstAttribute="bottom" secondItem="Pje-VJ-UPH" secondAttribute="bottom" constant="2" id="49y-CX-TCl"/>
+                            <constraint firstItem="SVe-0m-vTT" firstAttribute="trailing" secondItem="bdt-lt-7Y0" secondAttribute="trailing" constant="10" id="F4C-rF-rMv"/>
+                            <constraint firstItem="bdt-lt-7Y0" firstAttribute="centerY" secondItem="Pje-VJ-UPH" secondAttribute="centerY" id="GWf-Tg-w7L"/>
+                            <constraint firstItem="Pje-VJ-UPH" firstAttribute="leading" secondItem="SVe-0m-vTT" secondAttribute="leading" constant="10" id="HdO-mI-fdL"/>
+                            <constraint firstItem="SVe-0m-vTT" firstAttribute="bottom" secondItem="Pje-VJ-UPH" secondAttribute="bottom" constant="2" id="PJi-nZ-Xwz"/>
+                            <constraint firstItem="KQz-eT-STv" firstAttribute="trailing" secondItem="SVe-0m-vTT" secondAttribute="trailing" id="Qv3-U4-gVW"/>
+                            <constraint firstItem="KQz-eT-STv" firstAttribute="top" secondItem="SVe-0m-vTT" secondAttribute="top" id="VGi-FS-9dd"/>
+                            <constraint firstItem="bdt-lt-7Y0" firstAttribute="leading" secondItem="Pje-VJ-UPH" secondAttribute="trailing" constant="2" id="fek-28-udY"/>
+                            <constraint firstItem="KQz-eT-STv" firstAttribute="leading" secondItem="SVe-0m-vTT" secondAttribute="leading" id="fmi-2E-o70"/>
+                            <constraint firstItem="Pje-VJ-UPH" firstAttribute="top" secondItem="KQz-eT-STv" secondAttribute="bottom" constant="2" id="n89-9z-2lk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentTextField" destination="Pje-VJ-UPH" id="KHu-hb-QFN"/>
+                        <outlet property="tableView" destination="KQz-eT-STv" id="BPS-c9-jtb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z9t-Gh-vhU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1408.3969465648854" y="705.63380281690149"/>
+        </scene>
+        <!--Home View Controller-->
         <scene sceneID="hSa-Sc-5HQ">
             <objects>
                 <viewController storyboardIdentifier="Home" id="XrS-VO-K9y" customClass="HomeViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +67,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kcI-oq-cY1">
-                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -30,14 +80,14 @@
                             <constraint firstItem="fTz-Cu-KyE" firstAttribute="trailing" secondItem="kcI-oq-cY1" secondAttribute="trailing" id="wmG-F1-WdV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ホーム" image="home" id="fHt-6N-hfF"/>
+                    <navigationItem key="navigationItem" id="0Ub-eY-Gqi"/>
                     <connections>
-                        <outlet property="tableView" destination="kcI-oq-cY1" id="A6o-Ra-uXX"/>
+                        <outlet property="tableView" destination="kcI-oq-cY1" id="viO-ig-rFu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kp1-rd-19F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-601" y="711"/>
+            <point key="canvasLocation" x="324.4274809160305" y="710.56338028169023"/>
         </scene>
         <!--投稿-->
         <scene sceneID="TJa-dX-MKo">
@@ -96,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4pH-zp-ZLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101.5267175572519" y="710.56338028169023"/>
+            <point key="canvasLocation" x="1028.2442748091603" y="710.56338028169023"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="mHg-Cd-RGB">
@@ -221,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccO-CE-mTm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="810" y="711"/>
+            <point key="canvasLocation" x="1736.6412213740457" y="710.56338028169023"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="mBu-bd-0bc">
@@ -314,7 +364,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="XrS-VO-K9y" kind="relationship" relationship="viewControllers" id="Ik3-NR-Bqr"/>
+                        <segue destination="GL3-aK-Kjy" kind="relationship" relationship="viewControllers" id="Ik3-NR-Bqr"/>
                         <segue destination="VzN-5t-0jF" kind="relationship" relationship="viewControllers" id="85D-zU-7Fw"/>
                         <segue destination="1KN-05-bLv" kind="relationship" relationship="viewControllers" id="PUs-PB-cSQ"/>
                     </connections>
@@ -323,14 +373,37 @@
             </objects>
             <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
         </scene>
+        <!--ホーム-->
+        <scene sceneID="8o4-0K-R1P">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GL3-aK-Kjy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="ホーム" image="home" id="fHt-6N-hfF"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R3o-Sg-d7L">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XrS-VO-K9y" kind="relationship" relationship="rootViewController" id="1P7-9b-27R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7NC-gQ-SDd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-602.29007633587787" y="710.56338028169023"/>
+        </scene>
     </scenes>
     <resources>
         <image name="btn" width="300" height="40"/>
         <image name="camera" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="119"/>
         <image name="setting" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

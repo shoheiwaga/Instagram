@@ -16,7 +16,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // 投稿データを格納する配列
     var postArray: [PostData] = []
 
-    // Firestoreのリスナー
     var listener: ListenerRegistration?
 
     override func viewDidLoad() {
@@ -25,7 +24,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         tableView.dataSource = self
 
-        // カスタムセルを登録する
+        // セルを追加
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
     }
@@ -35,7 +34,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("DEBUG_PRINT: viewWillAppear")
         // ログイン済みか確認
         if Auth.auth().currentUser != nil {
-            // listenerを登録して投稿データの更新を監視する
             let postsRef = Firestore.firestore().collection(Const.PostPath).order(by: "date", descending: true)
             listener = postsRef.addSnapshotListener() { (querySnapshot, error) in
                 if let error = error {
@@ -57,7 +55,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("DEBUG_PRINT: viewWillDisappear")
-        // listenerを削除して監視を停止する
         listener?.remove()
     }
 
@@ -66,41 +63,46 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
-        cell.setPostData(postArray[indexPath.row])
+        let postData = postArray[indexPath.row]
 
-        // セル内のボタンのアクションをソースコードで設定する
+        cell.setPostData(postData)
+        cell.setComments(postData.comments)
+
         cell.likeButton.addTarget(self, action:#selector(handleLikeButton(_:)), for: .touchUpInside)
+        cell.commentButton.addTarget(self, action: #selector(handleCommentButton(_:)), for: .touchUpInside)
 
         return cell
     }
 
-    // セル内のボタンがタップされた時に呼ばれるメソッド
+    // いいねボタンがタップされた時の処理
     @objc func handleLikeButton(_ sender: UIButton) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
-
-        // タップされたセルのインデックスを求める
         let point = sender.convert(CGPoint.zero, to: tableView)
-        let indexPath = tableView.indexPathForRow(at: point)
+        guard let indexPath = tableView.indexPathForRow(at: point) else { return }
+        let postData = postArray[indexPath.row]
 
-        // 配列からタップされたインデックスのデータを取り出す
-        let postData = postArray[indexPath!.row]
-
-        // likesを更新する
         if let myid = Auth.auth().currentUser?.uid {
-            // 更新データを作成する
             var updateValue: FieldValue
             if postData.isLiked {
-                // すでにいいねをしている場合は、いいね解除のためmyidを取り除く更新データを作成
                 updateValue = FieldValue.arrayRemove([myid])
             } else {
-                // 今回新たにいいねを押した場合は、myidを追加する更新データを作成
                 updateValue = FieldValue.arrayUnion([myid])
             }
-            // likesに更新データを書き込む
             let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
             postRef.updateData(["likes": updateValue])
         }
+    }
+
+    // コメントボタンがタップされた時の処理
+    @objc func handleCommentButton(_ sender: UIButton) {
+        print("DEBUG_PRINT: コメントボタンがタップされました。")
+        let point = sender.convert(CGPoint.zero, to: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: point) else { return }
+        let postData = postArray[indexPath.row]
+
+        let commentVC = storyboard?.instantiateViewController(withIdentifier: "Comment") as! CommentViewController
+        commentVC.postData = postData
+        navigationController?.pushViewController(commentVC, animated: true)
     }
 }
